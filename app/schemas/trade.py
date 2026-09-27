@@ -34,6 +34,7 @@ class TradeRead(BaseModel):
 
     id: int
     instrument_id: int
+    symbol: str
     signal_id: int | None
     mode: str
     direction: str

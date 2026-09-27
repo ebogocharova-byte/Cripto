@@ -32,6 +32,7 @@ def test_compute_signal_endpoint(client, seed_instruments, monkeypatch):
     data = resp.json()
     assert data["signal"]["direction"] == "long"
     assert data["signal"]["source"] == "backend_compute"
+    assert data["signal"]["symbol"] == "ETHUSDT"
     assert "LONG" in data["telegram_text"]
 
 
