@@ -36,3 +36,7 @@ class Trade(Base, TimestampMixin):
     notes: Mapped[str | None] = mapped_column(String(500), nullable=True)
 
     instrument: Mapped[Instrument] = relationship()
+
+    @property
+    def symbol(self) -> str:
+        return self.instrument.symbol

@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     n8n_webhook_secret: str | None = None
     binance_api_base: str = "https://data-api.binance.vision"
     environment: str = "development"
+    cors_origins: str = "*"
 
 
 @lru_cache

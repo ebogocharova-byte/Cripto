@@ -40,3 +40,7 @@ class Signal(Base, TimestampMixin):
     raw_payload: Mapped[dict | None] = mapped_column(JSONB, nullable=True)
 
     instrument: Mapped[Instrument] = relationship()
+
+    @property
+    def symbol(self) -> str:
+        return self.instrument.symbol

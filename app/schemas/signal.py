@@ -9,6 +9,7 @@ class SignalRead(BaseModel):
 
     id: int
     instrument_id: int
+    symbol: str
     mode: str
     timeframe: str
     candle_open_time: datetime

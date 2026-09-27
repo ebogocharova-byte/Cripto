@@ -11,6 +11,7 @@ def test_create_trade_eth_ok(client, seed_instruments):
     data = resp.json()
     assert data["status"] == "open"
     assert data["mode"] == "swing"
+    assert data["symbol"] == "ETHUSDT"
 
 
 def test_create_trade_btc_rejected_422(client, seed_instruments):
