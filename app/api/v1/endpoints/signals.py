@@ -1,3 +1,4 @@
+import httpx
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
@@ -43,8 +44,10 @@ def compute_and_store_signal(
 
     try:
         computed = compute_signal(profile, instrument.symbol)
-    except ValueError as exc:
-        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail=str(exc)) from exc
+    except (ValueError, httpx.HTTPError) as exc:
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY, detail=f"Binance data fetch failed: {exc}"
+        ) from exc
 
     signal = persist_signal(db, instrument, payload.mode, "4h", computed, source="backend_compute")
     telegram_text = build_telegram_text(instrument, computed)

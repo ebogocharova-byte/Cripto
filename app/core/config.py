@@ -8,7 +8,7 @@ class Settings(BaseSettings):
 
     database_url: str = "postgresql+psycopg2://trading:trading@localhost:5432/trading"
     n8n_webhook_secret: str | None = None
-    binance_api_base: str = "https://api.binance.com"
+    binance_api_base: str = "https://data-api.binance.vision"
     environment: str = "development"
 
 
